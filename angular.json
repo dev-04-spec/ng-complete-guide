@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "e-shopping-ng"
+    }
+  },
+  "defaultProject": "e-shopping-ng",
+  "cli": {
+    "analytics": "f9e98132-053e-45d8-a324-69c3b3364d29"
+  }
 }
