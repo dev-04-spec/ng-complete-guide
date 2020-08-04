@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 
@@ -19,7 +18,8 @@ export class RecipeDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.id = parseInt(params['id']); //manoj
+      // this.id = parseInt(params['id']); //manoj
+      this.id = +params['id'];
       this.recipe = this.recipeService.getRecipe(this.id);
     });
   }
