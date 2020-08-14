@@ -7,7 +7,7 @@ import { AuthService, AuthResponseData } from './auth.service';
 
 @Component({
   selector: 'app-auth',
-  templateUrl: './auth.component.html'
+  templateUrl: './auth.component.html',
 })
 export class AuthComponent {
   isLoginMode = true;
@@ -24,8 +24,7 @@ export class AuthComponent {
     if (!form.valid) {
       return;
     }
-    const email = form.value.email;
-    const password = form.value.password;
+    const { email, password } = form.value;
 
     let authObs: Observable<AuthResponseData>;
 
@@ -38,12 +37,12 @@ export class AuthComponent {
     }
 
     authObs.subscribe(
-      resData => {
+      (resData) => {
         console.log(resData);
         this.isLoading = false;
         this.router.navigate(['/recipes']);
       },
-      errorMessage => {
+      (errorMessage) => {
         console.log(errorMessage);
         this.error = errorMessage;
         this.isLoading = false;
