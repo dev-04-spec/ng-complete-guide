@@ -10,7 +10,7 @@ const appRoutes: Routes = [
     pathMatch: 'full',
     canActivate: [AuthGuard],
   },
-  { path: 'auth', component: AuthComponent },
+
 ];
 
 @NgModule({
