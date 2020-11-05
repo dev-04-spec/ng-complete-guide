@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "e-shopping-ng": {
+    "ng-complete-guide": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/e-shopping-ng",
+            "outputPath": "dist/ng-complete-guide",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "e-shopping-ng:build"
+            "browserTarget": "ng-complete-guide:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "e-shopping-ng:build:production"
+              "browserTarget": "ng-complete-guide:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "e-shopping-ng:build"
+            "browserTarget": "ng-complete-guide:build"
           }
         },
         "test": {
@@ -111,18 +111,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "e-shopping-ng:serve"
+            "devServerTarget": "ng-complete-guide:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "e-shopping-ng:serve:production"
+              "devServerTarget": "ng-complete-guide:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "e-shopping-ng",
+  "defaultProject": "ng-complete-guide",
   "cli": {
     "analytics": "f9e98132-053e-45d8-a324-69c3b3364d29"
   }
