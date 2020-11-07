@@ -3,11 +3,13 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
-import { environment } from '../../environments/environment';
 import { Store } from '@ngrx/store';
+import { environment } from '../../environments/environment';
+
 import { User } from './user.model';
 import * as fromApp from '../store/app.reducer';
 import * as AuthActions from './store/auth.actions';
+
 export interface AuthResponseData {
   kind: string;
   idToken: string;
@@ -37,12 +39,12 @@ export class AuthService {
         {
           email: email,
           password: password,
-          returnSecureToken: true,
+          returnSecureToken: true
         }
       )
       .pipe(
         catchError(this.handleError),
-        tap((resData) => {
+        tap(resData => {
           this.handleAuthentication(
             resData.email,
             resData.localId,
@@ -61,12 +63,12 @@ export class AuthService {
         {
           email: email,
           password: password,
-          returnSecureToken: true,
+          returnSecureToken: true
         }
       )
       .pipe(
         catchError(this.handleError),
-        tap((resData) => {
+        tap(resData => {
           this.handleAuthentication(
             resData.email,
             resData.localId,
@@ -102,7 +104,7 @@ export class AuthService {
           email: loadedUser.email,
           userId: loadedUser.id,
           token: loadedUser.token,
-          expirationDate: new Date(userData._tokenExpirationDate),
+          expirationDate: new Date(userData._tokenExpirationDate)
         })
       );
       const expirationDuration =
@@ -114,7 +116,6 @@ export class AuthService {
 
   logout() {
     // this.user.next(null);
-
     this.store.dispatch(new AuthActions.Logout());
     this.router.navigate(['/auth']);
     localStorage.removeItem('userData');
@@ -137,14 +138,14 @@ export class AuthService {
     expiresIn: number
   ) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+    // this.user.next(user);
     const user = new User(email, userId, token, expirationDate);
-    //  this.user.next(user);
     this.store.dispatch(
       new AuthActions.Login({
         email: email,
         userId: userId,
         token: token,
-        expirationDate: expirationDate,
+        expirationDate: expirationDate
       })
     );
     this.autoLogout(expiresIn * 1000);
